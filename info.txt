@@ -5,4 +5,4 @@
 3.- npm run cypress:open
 4.- node_modules\.bin\cypress open
 5.- npm install -D cypress-xpath
-npm
+6.- npx cypress run --record --key 29c65eec-693b-4019-81c5-8eb65510771e
