@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ui-regression-allure": "cypress run --browser chrome --spec cypress/e2e/1-getting-started/**.js --env allure=true",
+    "cypress-run": "cypress run --record --key 29c65eec-693b-4019-81c5-8eb65510771e --env allure=true",
+    "cypress-run2": "cypress run --env allure=true"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.16.0",
+    "@shelex/cypress-allure-plugin": "^2.40.0",
+    "cypress": "^12.17.0",
+    "cypress-real-events": "^1.8.1",
     "cypress-xpath": "^2.0.1"
   },
   "dependencies": {}
