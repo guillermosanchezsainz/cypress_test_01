@@ -14,3 +14,7 @@
 7.- npm install -g allure-commandline --save-dev
 8.- npm install --save-dev mochawesome
 9.- npm run cy:run:chrome -- --reporter mochawesome
+
+C:\Windows\System32\config\systemprofile\AppData\Local\Cypress\Cache
+
+C:\Users\gsanchez\AppData\Local\Cypress\Cache
