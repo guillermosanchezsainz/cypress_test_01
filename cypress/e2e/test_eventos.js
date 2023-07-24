@@ -202,7 +202,6 @@ function comprobarModificacion()
     });
     
     for (const property in rows72) {
-      
       let textProp = property + ": " + rows72[property];
       cy.log(textProp);
     };
@@ -218,8 +217,12 @@ function comprobarModificacion()
     cy.wait(300);
     cy.xpath("/html/body/app-root/div[2]/dlg-gestion-eventos/div/div[2]/div[2]/div[2]/evt-datos-generales/div/mat-card/div/shared-input[1]").type(" BORRABLE");
     // cy.get('shared-input[ng-reflect-name="Código"]').type("EVEYELMO GUILLERMO TEST");
-    cy.wait(300);
+    cy.wait(300);    
     cy.xpath("/html/body/app-root/div[2]/dlg-gestion-eventos/div/div[1]/div[2]/button[2]").click();
+    /* cy.contains("CODIGO CYPRESS BORRABLE").realHover('mouse');
+    cy.contains("CODIGO CYPRESS BORRABLE").parent().parent().find('input[button-icon="delete"]').click();
+    console.log(cy.contains("CODIGO CYPRESS BORRABLE")); */
+    // cy.debug();
   });
 }
 
@@ -260,9 +263,19 @@ function editNuevoEvento()
   cy.xpath("/html/body/app-root/div[2]/dlg-gestion-eventos/div/div[1]/div[2]/button[2]").click();  
 }
 
+function borrarEvento()
+{
+  cy.contains("CODIGO CYPRESS BORRABLE").realHover('mouse');
+  cy.wait(300);
+  cy.contains("CODIGO CYPRESS BORRABLE").parent().parent().find('button[button-icon="delete"]').click();
+  cy.wait(300);
+  cy.xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/dlg-shared-info/div[2]/button[2]").click();
+}
+
 describe('Test Eventos 01', () =>{
   it('xxxx', () =>{
     // cy.log('popopo');
+    cy.viewport(1200, 750)
     cy.visit('http://mdesashipo.protecmedia.com/shipov25desa/');
     // cy.visit('http://localhost:4200');
     //cy.wait(1300);
@@ -277,9 +290,12 @@ describe('Test Eventos 01', () =>{
     AbrirEventosSubscripcion();
     AbrirSubEventosSubscripcion();
     clickNuevoEvento();
-    editNuevoEvento();
-    // saveFocusFlapa();
+    editNuevoEvento();    
     comprobarModificacion();
+    borrarEvento();
+
+    // console.log(cy.contains("CODIGO CYPRESS BORRABLE"));
+
     /* HoverEditRow();
     EditRow();
     focusTextName();

@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Jul 24 15:00:13 CEST 2023","Mon Jul 24 15:00:15 CEST 2023","2284","","Test login","","","","Test login incorrecto",""
+"passed","Mon Jul 24 15:00:25 CEST 2023","Mon Jul 24 15:01:07 CEST 2023","41982","","Test Eventos 01","","","","Test Evento Nuevo, comprobar, modificar, borrar",""
+"failed","Mon Jul 24 15:01:22 CEST 2023","Mon Jul 24 15:01:38 CEST 2023","16375","","Test login","","","","Test Pedidos",""
+"passed","Mon Jul 24 15:00:09 CEST 2023","Mon Jul 24 15:00:13 CEST 2023","3798","","Test login","","","","Test login correcto",""

@@ -113,30 +113,26 @@ function AbrirMenuSeccion()
   });
 }); */
 
-describe ( 'otro intento', function(){
+describe ('Suscripcion / Evento', function(){
   beforeEach(()=>{
-    cy.visit('http://mdesashipo.protecmedia.com/shipov25desa/');
-    /* cy.intercept('*Connect*').as('getSettings')    
-    TestLogin();
-    cy.wait('@getSettings').then( (interception) => {
-      cy.log(interception.response.body.Connect.SessionKey);
-      for (const property in interception.response) {
-        cy.log(property);
-      }
-    }); */
-    loginPage.submitLogin('guillermo', 'a');    
+    cy.visit('http://mdesashipo.protecmedia.com/shipov25desa/');    
+    loginPage.submitLogin('guillermo', 'a');
   });
-  /* it ( "test 01", ()=> {
+
+  it ( "test 01", ()=> {
     cy.log("loginPage.sessionKey: " + loginPage.sessionKey);
-  }); */
-  it ( "test 02", ()=> {
-    AbrirMenuSeccion();
-    /* describe('000', ()=>
-    {
-      it ( "test 03", ()=> {
-        cy.log("loginPage.sessionKey: " + loginPage.sessionKey);
-        AbrirMenuSeccion();
-      });
-    }); */
   });
+
+  it ( "test 02", ()=> {
+    AbrirMenuSeccion();    
+  });
+
+  it ( "test 03", ()=> {
+    AbrirMenuSeccion();    
+  });
+
+  it ( "test 04", ()=> {
+    AbrirMenuSeccion();    
+  });
+
 })
