@@ -3,44 +3,6 @@ import "cypress-real-events/support";
 import {loginPage} from './utils/LoginPage.js';
 import {utilsPage} from './utils/UtilsPage.js';
 
-function TestLogin()
-{
-  loginPage.submitLogin('guillermo', 'a');
-}
-
-function TestErrorLogin()
-{
-  cy.get("input[name='nameUser']").type("guillermo");
-  cy.get("input[name='namePwd']").type("guillermo");
-  cy.get("button.btn-submit").click();
-}
-
-function AbrirMenuSeccion()
-{
-  cy.xpath("//mat-toolbar/mat-toolbar-row/shared-module-navigator/button").click();  
-
-}
-
-function SeleccionarSuscripciones()
-{
-  cy.xpath("//mat-dialog-container/shared-module-card/mat-card/mat-card-content[1]/mat-card-content[1]/img").click();
-}
-
-function AbrirMenuSuscripciones()
-{
-  cy.xpath("/html/body/app-root/susc-page/div/mat-toolbar/mat-toolbar-row/button").click();
-}
-
-function AbrirGestionComercial()
-{
-  cy.xpath("/html/body/div[2]/div[2]/div/div/div/button[1]").click();
-}
-
-function AbrirCrmSuscripcion()
-{
-  cy.xpath("/html/body/div[2]/div[3]/div/div/div/button[1]").click();
-}
-
 function AbrirEventosSubscripcion()
 {
   cy.xpath("/html/body/div[2]/div[3]/div/div/div/button[8]").click();
@@ -52,69 +14,9 @@ function AbrirSubEventosSubscripcion()
 }
 
 
-function EscribirBuscadosCrmSuscripciones(str)
-{
-  cy.get("#mat-input-2").clear();
-  cy.get("#mat-input-2").type(str);
-  cy.wait(2100);
-}
-
-function AbrirMenuSeccionDesdeSuscripciones()
-{
-  cy.xpath("/html/body/app-root/susc-page/div/mat-toolbar/mat-toolbar-row/shared-module-navigator/button").click();
-}
-
 function SeleccionarConfiguracionDesdeSuscripciones()
 {
   cy.get("img.fontA-icon-module").should('be.visible').click();
-}
-
-function AbrirMenuUsuarioDesdeConfiguracion()
-{
-  cy.xpath("/html/body/app-root/conf-page/div/mat-toolbar/mat-toolbar-row/shared-button-user-card/button").click();
-}
-
-function FinalizarDesdeConfiguracion()
-{
-  cy.wait(400);
-  cy.xpath("//mat-dialog-container/shared-user-card/mat-card/mat-card-content/mat-card-content[3]/button").click();
-}
-
-function ConfirmarFinalizar()
-{
-  cy.xpath("//mat-dialog-container/dlg-shared-info/div[2]/button[2]").click();
-}
-
-function HoverEditRow()
-{ 
-  cy.wait(400);
-  cy.xpath("/html/body/app-root/susc-page/div/mat-sidenav-container/mat-sidenav-content/div/gestion-eventos/div/div[2]/shared-data-table/div/div[2]/div[2]/cdk-virtual-scroll-viewport/div[1]/div[5]/div[9]").realHover('mouse');
-}
-
-function EditRow()
-{
-  cy.wait(300);
-  cy.xpath("/html/body/app-root/susc-page/div/mat-sidenav-container/mat-sidenav-content/div/gestion-eventos/div/div[2]/shared-data-table/div/div[2]/div[2]/cdk-virtual-scroll-viewport/div[1]/div[5]/div[9]/button[1]").click();
-}
-
-function focusTextName()
-{
-  // cy.xpath("/html/body/app-root/div[2]/dlg-gestion-eventos/div/div[2]/div[2]/div[2]/evt-datos-generales/div/mat-card/div/shared-input[1]/mat-form-field/div/div[1]/div/input").focus();
-}
-
-function editTextName()
-{  
-  // EVEYELMO
-  cy.wait(300);
-  cy.xpath("/html/body/app-root/div[2]/dlg-gestion-eventos/div/div[2]/div[2]/div[2]/evt-datos-generales/div/mat-card/div/shared-input[1]").clear();
-  cy.wait(300);
-  cy.xpath("/html/body/app-root/div[2]/dlg-gestion-eventos/div/div[2]/div[2]/div[2]/evt-datos-generales/div/mat-card/div/shared-input[1]").type("EVEYELMO GUILLERMO TEST");
-  cy.wait(300);
-}
-
-function saveFocusFlapa()
-{
-  cy.xpath("/html/body/app-root/div[2]/dlg-gestion-eventos/div/div[1]/div[2]/button[2]").click();
 }
 
 function comprobarModificacion()
@@ -190,21 +92,20 @@ describe('Test Eventos 01', () =>{
     cy.viewport(1200, 750);
     cy.log(utilsPage.url);
     cy.visit(utilsPage.url);
-    TestLogin();
-    AbrirMenuSeccion();
-    SeleccionarSuscripciones();
-    AbrirMenuSuscripciones();
-    AbrirGestionComercial();
+    cy.login("guillermo", "a");
+    cy.abrirMenuSeccion();
+    cy.seleccionarSuscripciones();    
+    cy.abrirMenuSeccion();
+    cy.abrirGestionComercial();
+
     AbrirEventosSubscripcion();
     AbrirSubEventosSubscripcion();
     clickNuevoEvento();
     editNuevoEvento();
     comprobarModificacion();
     borrarEvento();
-    AbrirMenuSeccion();
+    cy.abrirMenuSeccion();
     SeleccionarConfiguracionDesdeSuscripciones();
-    AbrirMenuUsuarioDesdeConfiguracion();
-    FinalizarDesdeConfiguracion();
-    ConfirmarFinalizar();
+    cy.logOut();
   });
 });

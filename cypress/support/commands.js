@@ -45,6 +45,34 @@ Cypress.Commands.add('abrirMenuSuscripciones', () => {
   cy.xpath("/html/body/app-root/susc-page/div/mat-toolbar/mat-toolbar-row/button").click();
 });
 
+Cypress.Commands.add('abrirMenuConfiguracion', () => {
+  cy.xpath("/html/body/app-root/conf-page/div/mat-toolbar/mat-toolbar-row/button").click();
+});
+
+Cypress.Commands.add('abrirMenuSeccion', () => {
+  cy.xpath("/html/body/app-root/conf-page/div/mat-toolbar/mat-toolbar-row/button").click();
+});
+
 Cypress.Commands.add('abrirGestionComercial', () => { 
   cy.xpath("/html/body/div[2]/div[2]/div/div/div/button[1]").click();
+});
+
+
+Cypress.Commands.add('abrirMenuUsuarioDesdeConfiguracion', () => { 
+  cy.xpath("/html/body/app-root/conf-page/div/mat-toolbar/mat-toolbar-row/shared-button-user-card/button").click();
+});
+
+Cypress.Commands.add('finalizarDesdeConfiguracion', () => {
+  cy.wait(400);
+  cy.xpath("//mat-dialog-container/shared-user-card/mat-card/mat-card-content/mat-card-content[3]/button").click();
+});
+
+Cypress.Commands.add('confirmarFinalizar', () => {
+  cy.xpath("//mat-dialog-container/dlg-shared-info/div[2]/button[2]").click();
+});
+
+Cypress.Commands.add('logOut', () => { 
+  cy.abrirMenuUsuarioDesdeConfiguracion();
+  cy.finalizarDesdeConfiguracion();
+  cy.confirmarFinalizar();
 });
